@@ -1081,7 +1081,8 @@ class ArticleController extends BuilderController
         $detailTpl      =   $request->json('detail_tpl');
         $pageNum        =   $request->json('page_num');
         $status         =   $request->json('status');
-        
+        $pid            =   $request->json('pid');
+
         if (empty($title)) {
             return $this->error('标题必须填写！');
         }
@@ -1115,6 +1116,7 @@ class ArticleController extends BuilderController
         $data['detail_tpl']     = $detailTpl;
         $data['page_num']       = $pageNum;
         $data['status']         = $status;
+        $data['pid']            = $pid;
 
         $result = Category::where('id',$id)->update($data);
         if ($result) {

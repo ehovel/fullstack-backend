@@ -52,7 +52,7 @@ class IndexController extends Controller
 
         $data['category'] = $category;
         $data['articles'] = $articles;
-
+        
         return view('index',$data);
     }
 }

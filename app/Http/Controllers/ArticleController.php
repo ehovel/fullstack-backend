@@ -52,11 +52,15 @@ class ArticleController extends Controller
      * 文章列表页
      * @author tangtanglove
 	 */
-    public function list(Request $request)
+    public function list(Request $request,$idorname)
     {
-        $id      = $request->input('id');
-        $name    = $request->input('name');
-
+        if (is_numeric($idorname)) {
+            $id = $idorname;
+        } else {
+            $name = $idorname;
+        }
+//        $id      = $request->input('id');
+//        $name    = $request->input('name');
         if (!empty($id)) {
             $category = Category::where('id', $id)->first();
         } elseif(!empty($name)) {
@@ -82,16 +86,19 @@ class ArticleController extends Controller
         $data['category'] = $category;
         $data['articles'] = $articles;
 
-        return view($category->lists_tpl,$data);
+        $tpl = "article/list";
+        if ($category->lists_tpl) {
+            $tpl = $category->lists_tpl;
+        }
+        return view($tpl,$data);
     }
 
 	/**
      * 文章详情页
      * @author tangtanglove
 	 */
-    public function detail(Request $request)
+    public function detail(Request $request,$id)
     {
-        $id      = $request->input('id');
         $name    = $request->input('name');
 
         if (!empty($id)) {
@@ -148,7 +155,12 @@ class ArticleController extends Controller
         $data['article'] = $article;
         $data['prev'] = $prev;
         $data['next'] = $next;
-
-        return view($category['detail_tpl'],$data);
+        $tpl = "article/detail";
+        if ($category) {
+            $tpl = $category['detail_tpl'];
+        } else if ($article->page_tpl){
+            $tpl = $article->page_tpl;
+        }
+        return view($tpl,$data);
     }
 }

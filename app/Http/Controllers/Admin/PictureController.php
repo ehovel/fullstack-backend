@@ -614,7 +614,7 @@ class PictureController extends BuilderController
         // 不存在文件，则插入数据库
         if(empty($hasPicture)) {
 
-            $path = $file->store('public/uploads/pictures');
+            $path = $file->store('/public/uploads/pictures');
 
             // 获取文件url，用于外部访问
             $url = Storage::url($path);

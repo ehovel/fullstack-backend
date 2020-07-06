@@ -13,90 +13,72 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="tangtanglove">
     <title>{{$helper::config('WEB_SITE_NAME')}} - @yield('title')</title>
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    
-    </style>
-
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/swiper.min.css">
   </head>
   <body>
-<div class="container">
     @section('header')
-    <header class="blog-header py-3">
-        <nav class="navbar navbar-expand-md fixed-top bg-white border-bottom box-shadow">
-            <a class="navbar-brand text-dark" href="#">{{$helper::config('WEB_SITE_NAME')}}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    @navs($nav,0)
-                        @if (isset($nav['_child']))
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{!! $nav['title'] !!}</a>
-                            <div class="dropdown-m
-                            enu" aria-labelledby="dropdown01">
-                                @foreach($nav['_child'] as $childKey=>$childValue)
-                                    <a class="dropdown-item text-dark" href="{{ $childValue['url'] }}">{{ $childValue['title'] }}</a>
-                                @endforeach
+    <header class="met-head" m-id="48" m-type="head_nav">
+        <nav class="navbar navbar-default box-shadow-none head_nav_met_16_9_48">
+            <div class="nav-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="clearfix">
+                            <!-- logo -->
+                            <div class="navbar-header pull-xs-left">
+                                <a href="" class="met-logo pull-xs-left" title="{{$helper::config('WEB_SITE_NAME')}}">
+                                    <div class="">
+                                        <img src="{{$helper::config('WEB_SITE_LOGO')}}" alt="{{$helper::config('WEB_SITE_NAME')}}" class="hidden-sm-down">
+                                    </div>
+                                </a>
                             </div>
-                        </li>
-                        @else
-                        <li class="nav-item {{ $helper::urlSelected($nav['url'],'active') }}">
-                            <a class="nav-link text-dark" href="{{ $nav['url'] }}">{!! $nav['title'] !!} <span class="sr-only">{{ $helper::urlSelected($nav['url'],'(current)') }}</span></a>
-                        </li>
-                        @endif
-                    @endnavs
-                </ul>
-                <form method="get" action="/search/index" class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" @if(isset($_GET['query']))value="{{$_GET['query']}}"@endif aria-label="Search">
-                    <input class="form-control mr-sm-2" type="hidden" name="module" value="article" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-                </form>
-                <ul class="navbar-nav" style="margin-left:20px;">
-                @if(USERNAME)
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{USERNAME}}</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item text-dark" href="{{ route('user/index') }}">个人中心</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-dark" href="{{ route('logout') }}">退出</a>
+                            <!-- logo -->
+                            <button type="button" class="navbar-toggler hamburger hamburger-close collapsed p-x-5 head_nav_met_16_9_48-toggler" data-target="#head_nav_met_16_9_48-collapse" data-toggle="collapse">
+                                <span class="sr-only"></span>
+                                <span class="hamburger-bar"></span>
+                            </button>
+                            <!-- 会员注册登录 -->
+                            <!-- icon -->
+                            <div class="eco_header pull-right hidden-xs hidden-sm">
+                                <div class="eco_header_tel">
+                                    <p class="tel1 m-b-0"><img src="/images/head_certification.jpg"></p>
+                                    <p class="tel2  m-b-0 m-t-20">服务热线: 0515-87294098</p>
+                                </div>
+                            </div>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('order/index') }}">我的订单</a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('login') }}">请登录</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('register') }}">免费注册</a>
-                    </li>
-                @endif
-                </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 导航 -->
+            <div class="fullnav collapse navbar-collapse navbar-collapse-toolbar p-0" id="head_nav_met_16_9_48-collapse">
+                <div class="container">
+                    <div class="row flex-navlist">
+                        <ul class="nav navbar-nav navlist clearfix flex fixedw">
+                            @navs($nav,0)
+                            @if (isset($nav['_child']))
+                            <li class="nav-item dropdown m-l-0">
+                                <a href="img/" target="_self" title="{{ $nav['title'] }}" class="nav-link dropdown-toggle " data-toggle="dropdown" data-hover="dropdown">
+                                    <span style="">{{ $nav['title'] }}</span></a>
+                                <div class="dropdown-menu animate two-menu" style="">
+                                    <a href="{{ $nav['url'] }}" target="_self" title="全部" class="dropdown-item nav-parent hidden-lg-up">全部</a>
+                                    @foreach($nav['_child'] as $childKey=>$childValue)
+                                    <a class="dropdown-item hassub" href="{{ $childValue['url'] }}"><span style="">{{ $childValue['title'] }}</span></a>
+                                    @endforeach
+                                </div>
+                            </li>
+                            @else
+                            <li class="nav-item">
+                                <a href="/" title="网站首页" class="nav-link">{{ $nav['title'] }}</a>
+                            </li>
+                            @endif
+                            @endnavs
+
+                        </ul>
+                    </div>
+                    <!-- 导航 -->
+                </div>
             </div>
         </nav>
     </header>
@@ -105,8 +87,126 @@
         @yield('content')
     </main>
     @section('footer')
+    <footer class="foot_info_met_35_3_4 met-foot  border-top1" m-id="4" m-type="foot">
+        <div class="footer_widget_area">
+            <div class="container">
+                <div class="down_L col-lg-6  col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-6 list">
+                        <h4 class="font-size-16 m-t-0 list">
+                            <a href="about/" title="关于我们">    <span style="">关于我们</span></a>
+                        </h4>
+                        <ul class="ulstyle m-b-0">
+                            @categorys($category,'ARTICLE',1)
+                            <li>
+                                <a href="about/show.php?id=85" title="公司简介" target="_self">    <span style="">公司简介</span></a>
+                            </li>
+                            @endcategorys
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-6 list">
+                        <h4 class="font-size-16 m-t-0 list">
+                            <a href="product/" title="产品中心">    <span style="">产品中心</span></a>
+                        </h4>
+                        <ul class="ulstyle m-b-0">
+                            <li>
+                                <a href="product/product.php?class2=89" title="真空吸盘" target="_self">    <span style="">真空吸盘</span></a>
+                            </li>
+                            <li>
+                                <a href="product/product.php?class2=90" title="压力传感器" target="_self">    <span style="">压力传感器</span></a>
+                            </li>
+                            <li>
+                                <a href="product/product.php?class2=91" title="真空切换阀" target="_self">    <span style="">真空切换阀</span></a>
+                            </li>
+                            <li>
+                                <a href="product/product.php?class2=92" title="真空过滤器" target="_self">    <span style="">真空过滤器</span></a>
+                            </li>
+                            <li>
+                                <a href="product/product.php?class2=93" title="真空发生器" target="_self">    <span style="">真空发生器</span></a>
+                            </li>
+                            <li>
+                                <a href="product/product.php?class2=94" title="气缸接口" target="_self">    <span style="">气缸接口</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-6 list">
+                        <h4 class="font-size-16 m-t-0 list">
+                            <a href="download/" title="技术服务">    <span style="">技术服务</span></a>
+                        </h4>
+                        <ul class="ulstyle m-b-0">
+                            <li>
+                                <a href="about2/" title="服务体系" target="_self">    <span style="">服务体系</span></a>
+                            </li>
+                            <li>
+                                <a href="download/download.php?class2=96" title="技术指南" target="_self">    <span style="">技术指南</span></a>
+                            </li>
+                            <li>
+                                <a href="download/download.php?class2=97" title="CAD数据" target="_self">    <span style="">CAD数据</span></a>
+                            </li>
+                            <li>
+                                <a href="feedback/" title="信息反馈" target="_self">    <span style="">信息反馈</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-6 list">
+                        <h4 class="font-size-16 m-t-0 list">
+                            <a href="news/" title="新闻资讯">    <span style="">新闻资讯</span></a>
+                        </h4>
+                        <ul class="ulstyle m-b-0">
+                            <li>
+                                <a href="news/news.php?class2=99" title="公司新闻" target="_self">    <span style="">公司新闻</span></a>
+                            </li>
+                            <li>
+                                <a href="news/news.php?class2=100" title="公司展会" target="_self">    <span style="">公司展会</span></a>
+                            </li>
+                            <li>
+                                <a href="news/news.php?class2=101" title="行业资讯" target="_self">    <span style="">行业资讯</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="down_R col-lg-6  col-md-12 col-sm-12 col-xs-12">
+                    <div class="r_fist col-lg-5">
+                        <div class="r_span">
+                            <div class="top1">
+                                <p class="p1">气动元件有限公司</p>
+                                <p class="p2">联系电话：</p>
+                                <p class="p3">0731-000-000</p>
+                            </div>
+                        </div>
+                        <div class="fx">
+                            <span class="span_lf"> </span>
+                        </div>
+                    </div>
+                    <div class="r_last col-lg-7">
+                        <div class="er_fist">
+                            <img src="https://images.mituo.cn/mui891/upload/202006/1592366280.jpg" alt="$ui.er_descfistr">
+                            <p class="edesc">关注微信公众号</p>
+                        </div>
+                        <div class="er_lasr">
+                            <img src="https://images.mituo.cn/mui891/upload/202006/1592367340.jpg" alt="$ui.er_desclast">
+                            <p class="edesc">添加微信小程序</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 底部信息 -->
+            <div class="footer_copy_right">
+                <div class="container mydibucontainer">
+                    <div class="met_lang_all mymet_lang_all">
+                        <!-- 语言 -->
+                        <!-- 简繁体 -->
+                    </div>
+                    <p class="my_p">{{$helper::config('WEB_SITE_COPYRIGHT')}}</p>
+                    <p class="my_p">
+                        @links($link)<a href="{{$link['url']}}">{{$link['title']}}</a>
+                    @endlinks</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </footer>
     <footer class="blog-footer">
-        <p>{{$helper::config('WEB_SITE_COPYRIGHT')}} {!!$helper::config('WEB_SITE_SCRIPT')!!}</p>
+        <p>{!!$helper::config('WEB_SITE_COPYRIGHT')!!} {!!$helper::config('WEB_SITE_SCRIPT')!!}</p>
     </footer>
     @show
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

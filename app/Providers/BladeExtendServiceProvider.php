@@ -44,7 +44,7 @@ class BladeExtendServiceProvider extends ServiceProvider
             // 数组转换成tree
             $parseStr .= '$__NAVIGATIONSTREE__ = App\Services\Helper::listToTree($__NAVIGATIONS__,\'id\',\'pid\',\'_child\','.$pid.');';
             $parseStr .= ' foreach($__NAVIGATIONSTREE__ as $key=>'.$obj.') { ?>';
-            
+
             return $parseStr;
         });
 
@@ -107,30 +107,30 @@ class BladeExtendServiceProvider extends ServiceProvider
             return "<?php } ?>";
         });
 
-        // category模板标签开始 参数：循环对象，category名称
-        Blade::directive('category', function ($expression) {
+        // goods category模板标签开始 参数：循环对象，category父id
+        Blade::directive('goodsCategorys', function ($expression) {
             $expressions = explode(',',$expression);
 
             // 循环对象
             isset($expressions[0]) ? $obj = $expressions[0] : $obj = '';
+            // 父id
+            isset($expressions[1]) ? $pid = $expressions[1] : $pid = 0;
 
             // 类型
-            isset($expressions[1]) ? $categoryName = $expressions[1] : $categoryName = '';
+//            isset($expressions[1]) ? $categoryName = $expressions[1] : $categoryName = '';
 
-            // 父id
-            isset($expressions[2]) ? $type = $expressions[2] : $type = 'ARTICLE';
 
             // 解析字符串
             $parseStr  = $parseStr   = '<?php ';
             // 获取分类信息
-            $parseStr .= '$__CATEGORY__ = App\Models\Category::where(\'status\',1)->where(\'type\','.$type.')->where(\'name\','.$categoryName.')->first();';
+            $parseStr .= '$__CATEGORY__ = App\Models\GoodsCategory::where(\'status\',1)->where(\'pid\','.$pid.')->get();';
             $parseStr .= 'foreach($__CATEGORY__ as $key=>'.$obj.') { ?>';
 
             return $parseStr;
         });
 
         // category模板标签结束
-        Blade::directive('endcategory', function () {
+        Blade::directive('endgoodsCategorys', function () {
             return "<?php } ?>";
         });
 
@@ -215,7 +215,7 @@ class BladeExtendServiceProvider extends ServiceProvider
             }
 
             if($categoryName != '\'ALL\'') {
-                $parseStr .= '$__QUERY__->where(\'category_id\',$__CATEGORY__->id);';
+                $parseStr .= '$cid=0;if ($__CATEGORY__) {$cid=$__CATEGORY__->id;} $__QUERY__->where(\'category_id\',$cid);';
             }
 
             // 排序
@@ -302,9 +302,11 @@ class BladeExtendServiceProvider extends ServiceProvider
 
             // 循环对象
             isset($expressions[0]) ? $obj = $expressions[0] : $obj = '';
+            // 分类ids
+            isset($expressions[1]) ? $categoryIDsStr = $expressions[1] : $categoryIDsStr = "";
 
-            // 分类名称
-            isset($expressions[1]) ? $categoryName = $expressions[1] : $categoryName = '';
+//            // 分类名称
+//            isset($expressions[1]) ? $categoryName = $expressions[1] : $categoryName = '';
 
             // 读取数量
             isset($expressions[2]) ? $num = $expressions[2] : $num = '';
@@ -313,68 +315,61 @@ class BladeExtendServiceProvider extends ServiceProvider
             isset($expressions[3]) ? $offset = $expressions[3] : $offset = '';
 
             // 推荐位
-            isset($expressions[4]) ? $position = $expressions[4] : $position = '';
+//            isset($expressions[4]) ? $position = $expressions[4] : $position = '';
 
             // 解析字符串
             $parseStr  = $parseStr   = '<?php ';
-            if($categoryName != '\'ALL\'') {
-                // 分类信息
-                $parseStr .= '$__CATEGORY__ = Category::where(\'status\',1)->where(\'name\','.$categoryName.')->first();';
-            }
 
             // 定义查询对象
             $parseStr .= '$__QUERY__ = App\Models\Goods::query();';
-            $parseStr .= 'switch ('.$position.') {
-                case \'1\':
-                    $__QUERY__->whereIn(\'position\', [1,3,5,7,9,15]);
-                    break;
-                case \'2\':
-                    $__QUERY__->whereIn(\'position\', [2,3,6,7,9,10,14,15]);
-                    break;
-                case \'4\':
-                    $__QUERY__->whereIn(\'position\', [4,5,6,7,12,13,14,15]);
-                    break;
-                case \'8\':
-                    $__QUERY__->whereIn(\'position\', [8,9,10,11,12,13,14,15]);
-                    break;
-                default:
-                    break;
-            }';
+//            $parseStr .= 'switch ('.$position.') {
+//                case \'1\':
+//                    $__QUERY__->whereIn(\'position\', [1,3,5,7,9,15]);
+//                    break;
+//                case \'2\':
+//                    $__QUERY__->whereIn(\'position\', [2,3,6,7,9,10,14,15]);
+//                    break;
+//                case \'4\':
+//                    $__QUERY__->whereIn(\'position\', [4,5,6,7,12,13,14,15]);
+//                    break;
+//                case \'8\':
+//                    $__QUERY__->whereIn(\'position\', [8,9,10,11,12,13,14,15]);
+//                    break;
+//                default:
+//                    break;
+//            }';
 
             if(!empty($offset)) {
                 $parseStr .= '$__QUERY__->offset('.$offset.');';
             }
 
-            if($categoryName != '\'ALL\'') {
-                $parseStr .= '$__QUERY__->where(\'category_id\',$__CATEGORY__->id);';
+            if($categoryIDsStr) {
+                $parseStr .= '$__QUERY__->whereIn(\'goods_category_id\','.$categoryIDsStr.');';
             }
 
             $parseStr .= '$__GOODS__ = $__QUERY__->where(\'status\',1)
-            ->orderBy(\'level\', \'desc\')
+            //->orderBy(\'sort\', \'desc\')
             ->orderBy(\'id\', \'desc\')
             ->limit('.$num.')
             ->get()
             ->toArray();';
 
             $parseStr .= 'foreach ($__GOODS__ as $__KEY__ => $__VALUE__) {
-                $__COVERIDS__ = json_decode($__VALUE__[\'cover_ids\'], true);
-                foreach ($__COVERIDS__ as $__COVERKEY__ => $__COVERVALUE__) {
-                    $__GOODS__[$__KEY__][\'cover_paths\'][$__COVERKEY__] =  App\Services\Helper::getPicture($__COVERVALUE__);
-                }
-                $__GOODS__[$__KEY__][\'spu_data\'] =  json_decode($__COVERVALUE__[\'spu_data\'], true);
+                $__GOODS__[$__KEY__][\'cover_path\'] =  App\Services\Helper::getPicture($__VALUE__[\'cover_id\']);
+                $__GOODS__[$__KEY__][\'spu_data\'] =  json_decode($__VALUE__[\'goods_shop_spus\'], true);
 
-                $__SKUIDS__ = json_decode($__COVERVALUE__[\'sku_ids\'], true);
-                $__SKUDATA__ = App\Models\GoodsSku::where(\'status\',1)
-                ->whereIn(\'id\',$__SKUIDS__)
-                ->orderBy(\'sort\', \'asc\')
-                ->get()
-                ->toArray();
+//                $__SKUIDS__ = json_decode($__COVERVALUE__[\'sku_ids\'], true);
+//                $__SKUDATA__ = App\Models\GoodsSku::where(\'status\',1)
+//                ->whereIn(\'id\',$__SKUIDS__)
+//                ->orderBy(\'sort\', \'asc\')
+//                ->get()
+//                ->toArray();
 
-                $__GOODS__[$__KEY__][\'sku_data\'] = $__SKUDATA__;
+//                $__GOODS__[$__KEY__][\'sku_data\'] = $__SKUDATA__;
             }';
 
             $parseStr .= ' foreach($__GOODS__ as $key=>'.$obj.') { ?>';
-            
+
             return $parseStr;
         });
 
@@ -456,7 +451,7 @@ class BladeExtendServiceProvider extends ServiceProvider
                 $__GETDATA__[\'title\'] = $__LIST__;
                 $__DATA__[] = $__GETDATA__;
             }';
-            
+
             $parseStr .= 'foreach($__DATA__ as $key=>'.$obj.') { ?>';
             return $parseStr;
         });

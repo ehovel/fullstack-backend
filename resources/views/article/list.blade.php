@@ -7,76 +7,72 @@
 @section('description', $category->description)
 
 @section('content')
-  <div class="banner rounded"> 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            @banners($banner,'IndexBanner')
-                <a href="{{$banner['url']}}">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ $helper::getPicture($banner['cover_id']) }}" alt="First slide">
+<div class="news_list_page_met_83_1_53 met-news">
+    <div class="container popular-product right">
+        <!-- sidebar -->
+        <div class="col-md-9 met-news-body">
+            <div class="row">
+                <!-- /sidebar -->
+                <div class="main-content" m-id="53">
+                    <ul class="met-pager-ajax imagesize" data-scale="500x">
+                        @foreach($articles as $key => $article)
+                        <li class="li1">
+                            <a href="/article/detail/{{$article->id}}" title="{{$article->title}}" target="_self" class="clearfix">
+                                <div class="img-box">
+                                    <img src="{{ $helper::getPicture($article['cover_ids']) }}" alt="{{$article->title}}">
+                                </div>
+                                <div class="right-content">
+                                    <h3 class="content-title">    <span style="">{{ $helper::msubstr($article['title'],0,30) }}</span></h3>
+
+                                    <p class="content-desc font-weight-200">{{ $helper::msubstr(strip_tags($article['content']),0,130) }}</p>
+
+                                    <span class="content-time">{{date('Y-m',strtotime($article['created_at']))}}</span>
+                                </div>
+
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+
+                    <!-- 分页 -->
+                    <div class="m-t-20 text-xs-center hidden-sm-down" m-type="nosysdata">
+                        {{ $articles->appends(['name'=>$category->name])->links() }}
                     </div>
-                </a>
-            @endbanners
+                    <div class="met_pager met-pager-ajax-link hidden-md-up" data-plugin="appear" data-animate="slide-bottom" data-repeat="false" m-type="nosysdata" style="">
+                        <button type="button" class="btn btn-primary btn-block btn-squared ladda-button" id="met-pager-btn" data-plugin="ladda" data-style="slide-left" data-url="" data-page="1">
+                            <i class="icon wb-chevron-down m-r-5" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- sidebar -->
+            </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">上一个</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">下一个</span>
-        </a>
+        <!-- /sidebar -->
+
+        <!--      -->
+        <div class="floats col-md-3 col-xs-12" style="overflow: hidden;">
+            <div class="">
+                <div class="row">
+                    <aside class="sidebar_met_21_1_47 met-sidebar panel-body m-b-0" boxmh-h="" m-id="47" m-type="nocontent">
+                        <h2 class="sidebar-tile head-bg     bgpic">
+                            <a href="../news/" title="新闻资讯" class="    active" target="_self">
+                                新闻资讯
+                            </a>
+                        </h2>
+                        <ul class="sidebar-column list-icons">
+                            @categorys($category,'ARTICLE',0)
+                            <li>
+                                <a href="/category/list/{{$category['id']}}" title="{{$category['title']}}" class="bars ">{{$category['title']}}</a>
+                            </li>
+                            @endcategorys
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div> 
-  <main role="main" class="container"> 
-   <div class="row"> 
-    <div class="col-md-8 blog-main"> 
-     <h3 class="pb-4 mb-4 font-italic border-bottom"> {{$category->title}} </h3>
-     @foreach($articles as $key => $article)
-     <div class="blog-post"> 
-      <h2 class="blog-post-title"><a href="/article/detail?id={{$article['id']}}">{{ $helper::msubstr($article['title'],0,30) }}</a></h2> 
-      <p class="blog-post-meta">{{date('Y-m-d',strtotime($article['created_at']))}}</p> 
-        <p>
-            {!!strip_tags($article['description'])!!}
-        </p>
-     </div>
-     <!-- /.blog-post -->
-     @endforeach
-     <nav class="blog-pagination">
-        {{ $articles->appends(['name'=>$category->name])->links() }}
-     </nav>
-    </div>
-    <!-- /.blog-main --> 
-    <aside class="col-md-4 blog-sidebar"> 
-     <div class="p-4 mb-3 bg-light rounded"> 
-      <h4 class="font-italic">关于我们</h4> 
-      <p class="mb-0">
-        @page($page,'aboutus')
-            {!!strip_tags($page['content'])!!}
-        @endpage
-       </p> 
-     </div> 
-     <div class="p-4"> 
-      <h4 class="font-italic">文章归档</h4> 
-      <ol class="list-unstyled mb-0">
-            @archives($archive,'posts')
-                <li><a href="#">{{$archive['created_date']}}</a></li> 
-            @endarchives
-      </ol> 
-     </div> 
-     <div class="p-4"> 
-      <h4 class="font-italic">友情链接</h4> 
-      <ol class="list-unstyled">
-        @links($link)
-            <li><a href="{{$link['url']}}">{{$link['title']}}</a></li> 
-        @endlinks
-      </ol> 
-     </div> 
-    </aside>
-    <!-- /.blog-sidebar --> 
-   </div>
-   <!-- /.row --> 
-  </main>
+</div>
   <!-- /.container -->
 @endsection
 

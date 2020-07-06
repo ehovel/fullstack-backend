@@ -786,7 +786,10 @@ class Helper
                     if(self::config('SSL_OPEN') == 1) {
                         $baseUrl = 'https://';
                     }
-                    $url = $baseUrl.$_SERVER['HTTP_HOST'].Storage::url($picture['path']);
+                    $url = Storage::url($picture['path']);
+                    if(strpos($url,'http') === false) {
+                        $url = $baseUrl.$_SERVER['HTTP_HOST'].$url;
+                    }
                 }
                 $result = $url;
             } else {
@@ -1178,6 +1181,9 @@ class Helper
         $value = '';
         if(!empty($config)) {
             $value = $config->value;
+            if ($config['type']=='picture') {
+                $value = self::getPicture($value);
+            }
         }
         return $value;
     }

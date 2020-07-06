@@ -366,7 +366,7 @@ class CategoryController extends BuilderController
         $detailTpl      =   $request->json('detail_tpl');
         $pageNum        =   $request->json('page_num');
         $status         =   $request->json('status');
-        
+
         if (empty($title)) {
             return $this->error('标题必须填写！');
         }
