@@ -121,13 +121,13 @@
                 <p class="desc" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></p>
             </div>
             <ul class="tabs clearfix">
-                @categorys($category,'ARTICLE',0)
+                @categorys($category,'ARTICLE',3)
                 <li
                         @if($key == 0)
                         class="active"
                         @endif
                         style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
-                    <a href="news/" title="{{$category['title']}}" target="_self"><h3>{{$category['title']}}</h3></a>
+                    <a href="/article/list/{{$category['id']}}" title="{{$category['title']}}" target="_self"><h3>{{$category['title']}}</h3></a>
                 </li>
                 @endcategorys
             </ul>

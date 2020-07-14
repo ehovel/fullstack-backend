@@ -80,19 +80,16 @@
                     <div class="row">
                         <aside class="sidebar_met_21_1_49 met-sidebar panel-body m-b-0" boxmh-h="" m-id="49" m-type="nocontent">
                             <h2 class="sidebar-tile head-bg     bgpic">
-                                <a href="../news/" title="新闻资讯" class="    " target="_self">
-                                    新闻资讯										</a>
+                                <a href="../news/" title="新闻资讯" class="    " target="_self">新闻资讯</a>
                             </h2>
                             <ul class="sidebar-column list-icons">
-                                <li>
-                                    <a href="../news/news.php?class2=99" title="公司新闻" class="bars in">公司新闻</a>
+                                @categorys($cate,'ARTICLE',3)
+                                <li @if($cate['id'] == $category['id'])
+                                class="active"
+                                @endif>
+                                <a href="/article/list/{{$cate['id']}}" title="{{$cate['title']}}" class="bars ">{{$cate['title']}}</a>
                                 </li>
-                                <li>
-                                    <a href="../news/news.php?class2=100" title="公司展会" class="bars ">公司展会</a>
-                                </li>
-                                <li>
-                                    <a href="../news/news.php?class2=101" title="行业资讯" class="bars ">行业资讯</a>
-                                </li>
+                                @endcategorys
                             </ul>
                             <h2 class="sidebar-tile">
 									<span>

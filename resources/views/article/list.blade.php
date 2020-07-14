@@ -24,7 +24,7 @@
                                 <div class="right-content">
                                     <h3 class="content-title">    <span style="">{{ $helper::msubstr($article['title'],0,30) }}</span></h3>
 
-                                    <p class="content-desc font-weight-200">{{ $helper::msubstr(strip_tags($article['content']),0,130) }}</p>
+                                    <p class="content-desc font-weight-200">{{ $helper::msubstr(strip_tags($article['content']),0,80) }}</p>
 
                                     <span class="content-time">{{date('Y-m',strtotime($article['created_at']))}}</span>
                                 </div>
@@ -55,14 +55,16 @@
                 <div class="row">
                     <aside class="sidebar_met_21_1_47 met-sidebar panel-body m-b-0" boxmh-h="" m-id="47" m-type="nocontent">
                         <h2 class="sidebar-tile head-bg     bgpic">
-                            <a href="../news/" title="新闻资讯" class="    active" target="_self">
+                            <a href="javascript:;" title="新闻资讯" class="    active" target="_self">
                                 新闻资讯
                             </a>
                         </h2>
                         <ul class="sidebar-column list-icons">
-                            @categorys($category,'ARTICLE',0)
-                            <li>
-                                <a href="/category/list/{{$category['id']}}" title="{{$category['title']}}" class="bars ">{{$category['title']}}</a>
+                            @categorys($cate,'ARTICLE',3)
+                            <li @if($cate['id'] == $category['id'])
+                                class="active"
+                                @endif>
+                                <a href="/article/list/{{$cate['id']}}" title="{{$cate['title']}}" class="bars ">{{$cate['title']}}</a>
                             </li>
                             @endcategorys
                         </ul>
