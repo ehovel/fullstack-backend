@@ -35,33 +35,38 @@
         <div class="container">
             <div class="case" id="case" role="toolbar">
                 <ul class="sliderbox row  slick-dotted slick-vertical">
-                    <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
-                    <div aria-live="polite" class="slick-list draggable" style="height: 28px;"><div class="slick-track" style="opacity: 1; height: 112px; transform: translate3d(0px, -28px, 0px);" role="listbox"><div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 1144px;" tabindex="-1"><div>
-                                    <li class="a-list" style="width: 100%; display: inline-block;"><a href="../news1/shownews.php?id=8" tabindex="-1">五金配件行业迎来挑战</a></li></div>
-                                <div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=7" tabindex="-1">五金选购有窍门</a>
-                                    </li></div><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=6" tabindex="-1">厕所怎么装修 风水破解大全</a>
-                                    </li></div></div><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 1144px;" tabindex="-1" role="option" aria-describedby="slick-slide00"><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=11" tabindex="0">未来卫浴五金依然充满潜力</a>
-                                    </li></div><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=10" tabindex="0">电子商务促进出口 广东五金冲向欧洲市场</a>
-                                    </li></div><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=9" tabindex="0">五金行业竞争将呈现六大特点</a>
-                                    </li></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 1144px;" tabindex="-1" role="option" aria-describedby="slick-slide01"><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=8" tabindex="-1">五金配件行业迎来挑战</a>
-                                    </li></div><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=7" tabindex="-1">五金选购有窍门</a>
-                                    </li></div><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=6" tabindex="-1">厕所怎么装修 风水破解大全</a>
-                                    </li></div></div><div class="slick-slide slick-cloned" data-slick-index="2" aria-hidden="true" style="width: 1144px;" tabindex="-1"><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=11" tabindex="-1">未来卫浴五金依然充满潜力</a>
-                                    </li></div><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=10" tabindex="-1">电子商务促进出口 广东五金冲向欧洲市场</a>
-                                    </li></div><div><li class="a-list" style="width: 100%; display: inline-block;">
-                                        <a href="../news1/shownews.php?id=9" tabindex="-1">五金行业竞争将呈现六大特点</a>
+<!--                    <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>-->
+                    <div aria-live="polite" class="slick-list draggable" style="height: 28px;">
+                        <div class="slick-track" style="opacity: 1;" role="listbox">
+                            <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 1144px;" tabindex="-1" role="option" aria-describedby="slick-slide00">
+                                <div>
+                                    <li class="a-list" style="width: 100%; display: inline-block;">
+                                        <a href="../news1/shownews.php?id=11" tabindex="0">针型阀、阀组、管件</a>
                                     </li>
-                                </div></div></div></div><button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button><ul class="slick-dots" role="tablist" style="display: block;"><li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation00" id="slick-slide00"><button type="button" data-role="none" role="button" tabindex="0">1</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation01" id="slick-slide01" class=""><button type="button" data-role="none" role="button" tabindex="0">2</button></li></ul></ul>
+                                </div>
+                                <div>
+                                    <li class="a-list" style="width: 100%; display: inline-block;">
+                                        <a href="../news1/shownews.php?id=10" tabindex="0">工艺阀门、过滤器</a>
+                                    </li>
+                                </div>
+                                <div>
+                                    <li class="a-list" style="width: 100%; display: inline-block;">
+                                        <a href="../news1/shownews.php?id=9" tabindex="0">特种阀门、定制产品</a>
+                                    </li>
+                                </div>
+                            </div>
+
+                        </div></div>
+<!--                    <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>-->
+<!--                    <ul class="slick-dots" role="tablist" style="display: block;">-->
+<!--                        <li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation00" id="slick-slide00">-->
+<!--                            <button type="button" data-role="none" role="button" tabindex="0">1</button>-->
+<!--                        </li>-->
+<!--                        <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation01" id="slick-slide01" class="">-->
+<!--                            <button type="button" data-role="none" role="button" tabindex="0">2</button>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+                </ul>
             </div>
         </div>
     </div>
@@ -203,9 +208,8 @@
 
 <!-- 自定义脚本 -->
 @section('script')
-<script src="/js/swiper.min.js"> </script>
 <script src="/js/jquery.lazyload.min.js"> </script>
-
+<script src="/js/swiper.min.js"> </script>
 <script>
     var swiper = new Swiper('.swiper-container', {
       navigation: {
@@ -214,8 +218,8 @@
       },
     });
     var $original = $('[data-original]');
-<!--    if ($original.length) {-->
+    if ($original.length) {
         $original.lazyload()
-<!--    }-->
+    }
 </script>
-@endsection
+@stop

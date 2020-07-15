@@ -4515,6 +4515,9 @@ body.met-navfixed {
     }
 }
 
+.breadcrumb {
+    padding-left: 0;
+}
 .news_list_met_16_14_42 .transition {
     transition: all .5s;
     -moz-transition: all .5s;
@@ -5054,7 +5057,6 @@ body.met-navfixed {
 }
 .foot_info_met_35_3_4 .footer_widget_area {
     background-color: rgb(54, 54, 54);
-    background-image: url(index_cn.css);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -5116,6 +5118,7 @@ body.met-navfixed {
     display: table;
     text-align: center;
     overflow: hidden;
+    background:rgb(250, 250, 250) !important
 }
 
 .location_met_16_1_13.met-crumbs {
@@ -5294,6 +5297,7 @@ body.met-navfixed {
 }
 .news_list_page_met_83_1_53 .popular-product.right .col-md-9 {
     float: right;
+    padding-right:0;
 }
 .news_list_page_met_83_1_53 .imagesize {
     margin: 0px;
@@ -5338,9 +5342,12 @@ body.met-navfixed {
 .news_list_page_met_83_1_53 .content-time {
     color: rgb(153, 153, 153);
 }
-
+.eh-sidebar {
+    padding:0;
+    background: #fff;
+}
 .sidebar_met_21_1_47 .sidebar-tile.head-bg.bgpic {
-    background: #013e7a;
+    background: #155da5;
     opacity: .8;
 }
 .sidebar_met_21_1_47 .sidebar-tile.head-bg.bgpic a{
@@ -5373,15 +5380,7 @@ body.met-navfixed {
 }
 
 .sidebar_met_21_1_47.met-sidebar {
-    margin-left: 30px;
     padding: 0px;
-}
-
-.news_list_page_met_83_1_53 .met-sidebar {
- margin-right: 30px;
-}
-.met-sidebar {
-    margin-left: 30px;
 }
 .panel-body {
     position: relative;
@@ -5409,8 +5408,7 @@ body.met-navfixed {
     background: rgb(255, 255, 255);
 }
 .sidebar_met_21_1_47 .sidebar-column > li.active a{
-    background: #013e7a;
-    color:#fff;
+    color: #013e7a;
     opacity:.8;
 }
 

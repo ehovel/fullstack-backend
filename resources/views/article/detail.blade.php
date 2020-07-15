@@ -7,34 +7,15 @@
 @section('description', $article->description)
 
 @section('content')
-<div class="banner_met_36_4_62 page-bg" m-id="62" m-type="banner">
-    <div class="slick-slide" data-count="1">
-        <img class="cover-image" src="https://images.mituo.cn/mui891/upload/202006/1592373944.jpg" srcset="../upload/thumb_src/x_767/1592373944.jpg 767w,../upload/202006/1592373944.jpg" sizes="(max-width: 767px) 767px" alt="专注中高端气动市场" data-height="0|0|0" data-fade="true" data-autoplayspeed="4000" style="height: auto;">
-        <div class="banner-text p-4" data-position="p-4|p-4" met-imgmask="">
-            <div class="container">
-                <div class="banner-text-con">
-                    <div>
-
-                        <div class="m-t-15 animation-slide-bottom banner-btn">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="location_met_16_1_13 met-crumbs" m-id="13">
     <div class="container">
         <div class="row">
             <ol class="breadcrumb m-b-0 subcolumn-crumbs">
                 <li class="breadcrumb-item">
-                    <a href="../" title="网站首页"><em class="icon wb-home"></em> 网站首页</a>
+                    <a href="/" title="网站首页"><em class="icon fa fa-home"></em> 网站首页</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="../news/" title="新闻资讯" class="">新闻资讯</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="../news/news.php?class2=99" title="公司新闻" class="">公司新闻</a>
+                    <a href="/article/list/{{$category['id']}}" title="{{$category['title']}}" class="">{{$category['title']}}</a>
                 </li>
             </ol>
         </div>
@@ -58,15 +39,20 @@
                     <div class="met-page p-y-30 border-top1">
                         <div class="container p-t-30 ">
                             <ul class="pagination block blocks-2 text-xs-center text-sm-left">
+
                                 <li class="page-item m-b-0 ">
-                                    <a href="" title="坚持以“以科技求发展，以质量求生存”为方针" class="page-link text-truncate">
-                                        上一篇                <span aria-hidden="true" class="hidden-xs-down">: 坚持以“以科技求发展，以质量求生存”为方针</span>
+                                    @if ($prev['id'])
+                                    <a href="/article/detail/{{$prev['id']}}" title="{{$prev['title']}}" class="page-link text-truncate">
+                                        上一篇                <span aria-hidden="true" class="hidden-xs-down">: {{$prev['title']}}</span>
                                     </a>
+                                    @endif
                                 </li>
                                 <li class="page-item m-b-0 ">
-                                    <a href="../news/shownews.php?id=32" title="专业气动研发、生产、销售为一体的高科技企业" class="page-link pull-xs-right text-truncate">
-                                        下一篇                <span aria-hidden="true" class="hidden-xs-down">: 专业气动研发、生产、销售为一体的高科技企业</span>
+                                    @if ($next['id'])
+                                    <a href="/article/detail/{{$next['id']}}" title="{{$next['title']}}" class="page-link pull-xs-right text-truncate">
+                                        下一篇                <span aria-hidden="true" class="hidden-xs-down">: {{$next['title']}}</span>
                                     </a>
+                                    @endif
                                 </li>
                             </ul>
                         </div>
@@ -75,7 +61,7 @@
             </div>
 
             <!--      -->
-            <div class="floats col-md-3 col-xs-12" style="overflow: hidden;">
+            <div class="floats col-md-3" style="overflow: hidden;">
                 <div class="">
                     <div class="row">
                         <aside class="sidebar_met_21_1_49 met-sidebar panel-body m-b-0" boxmh-h="" m-id="49" m-type="nocontent">
@@ -96,21 +82,12 @@
 										为你推荐									</span>
                             </h2>
                             <div class="side-tel">
-                                <p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;">气动元件有限公司</span></p><p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;">服务热线：0731-0000-0000</span></p><p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;">电子邮箱：email@email.mt</span></p><p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;">官方网址：www.@@@.com</span></p>								</div>
-                            <h2 class="sidebar-tile m-t-25">
-								<span>
-									搜索								</span>
-                            </h2>
-                            <div class="sidebar_met_21_1_49-search" data-placeholder="search">
-                                <form method="get" class="page-search-form" role="search" action="../news/index.php?lang=cn" m-id="search_column" m-type="nocontent">
-                                    <input type="hidden" name="lang" value="cn">
-                                    <input type="hidden" name="stype" value="0">
-                                    <input type="hidden" name="search" value="search"><input type="hidden" name="class1" value="83">
-                                    <div class="input-search input-search-dark">
-                                        <button type="submit" class="input-search-btn"><i class="icon wb-search" aria-hidden="true"></i></button>
-                                        <input type="text" class="form-control input-lg" name="content" value="" placeholder="search">
-                                    </div>
-                                </form>		                   </div>
+                                <p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;"></span></p>
+                                <p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;"></span></p>
+                                <p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;"></span></p>
+                                <p style="white-space: normal; text-indent: 2em;"><span style="font-size: 14px;"></span></p>
+                            </div>
+
                         </aside>
                     </div>
                 </div>

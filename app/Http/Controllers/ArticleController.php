@@ -109,14 +109,14 @@ class ArticleController extends Controller
             abort(404, 'Not Found');
         }
 
-        $category = Category::where('id', $article->category_id)->first();
-
-        // 浏览量自增
-        Post::where('id', $id)->increment('view',3);
-
         if (empty($article)) {
             abort(404, 'Not Found');
         }
+        $category = Category::where('id', $article->category_id)->first();
+
+        // 浏览量自增
+        Post::where('id', $id)->increment('view',1);
+
 
         // 上一个
         $prev = Post::where('id','<', $id)->where('category_id',$article->category_id)->limit(1)->where('status', 1)->first();

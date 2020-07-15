@@ -15052,24 +15052,6 @@ h3.example-title {
     border-radius: 3px
 }
 
-@font-face {
-    font-family:'Web Icons';font-weight:400;font-style:normal;src:url(../../fonts/web-icons/./web-icons.eot?v=0.2.3);src:url(../../fonts/web-icons/./web-icons.eot?#iefix&v=0.2.3) format('embedded-opentype'),url(../../fonts/web-icons/./web-icons.woff2?v=0.2.3) format('woff2'),url(../../fonts/web-icons/./web-icons.woff?v=0.2.3) format('woff'),url(../../fonts/web-icons/./web-icons.ttf?v=0.2.3) format('truetype'),url(../../fonts/web-icons/./web-icons.svg?v=0.2.3#web-icons) format('svg')
-}[class*=' wb-'],[class^=wb-] {
-     font-family: 'Web Icons';
-     font-weight: 400;
-     font-style: normal;
-     position: relative;
-     display: inline-block;
-     -webkit-transform: translate(0,0);
-     -ms-transform: translate(0,0);
-     -o-transform: translate(0,0);
-     transform: translate(0,0);
-     text-rendering: auto;
-     speak: none;
-     -webkit-font-smoothing: antialiased;
-     -moz-osx-font-smoothing: grayscale
- }
-
 .wb-dashboard:before {
     content: ''
 }
@@ -15755,8 +15737,22 @@ h3.example-title {
 }
 
 @font-face {
-    font-family:'FontAwesome';src:url(../../fonts/font-awesome/./fontawesome-webfont.eot?v=4.7.0);src:url(../../fonts/font-awesome/./fontawesome-webfont.eot?#iefix&v=4.7.0) format('embedded-opentype'),url(../../fonts/font-awesome/./fontawesome-webfont.woff2?v=4.7.0) format('woff2'),url(../../fonts/font-awesome/./fontawesome-webfont.woff?v=4.7.0) format('woff'),url(../../fonts/font-awesome/./fontawesome-webfont.ttf?v=4.7.0) format('truetype'),url(../../fonts/font-awesome/./fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format('svg');font-weight:normal;font-style:normal
-}
+    font-family:'FontAwesome';src:url(../font-awesome-4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0);src:url(../font-awesome-4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format('embedded-opentype'),url(../font-awesome-4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0) format('woff2'),url(../font-awesome-4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0) format('woff'),url(../font-awesome-4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0) format('truetype'),url(../font-awesome-4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format('svg');font-weight:normal;font-style:normal
+}[class*=' fa-'],[class^=fa-] {
+     font-family: 'Web Icons';
+     font-weight: 400;
+     font-style: normal;
+     position: relative;
+     display: inline-block;
+     -webkit-transform: translate(0,0);
+     -ms-transform: translate(0,0);
+     -o-transform: translate(0,0);
+     transform: translate(0,0);
+     text-rendering: auto;
+     speak: none;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale
+ }
 
 .fa,[class*=' fa-'],[class^=fa-] {
     display: inline-block;
@@ -19620,10 +19616,6 @@ pre {
         font-size: 24px;
         line-height: 30px
     }
-}
-
-.met-sidebar {
-    margin-left: 30px
 }
 
 @media (max-width:991px) {
