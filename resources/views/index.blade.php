@@ -198,7 +198,7 @@
                     <img src="https://images.mituo.cn/mui891/upload/202006/1592462051.png" alt="咨询电话">
                     <p>咨询电话</p>
                 </div>
-                <a href="tel:0731-000-0000"><div class="tel">0515-87294098</div></a>
+                <a href="tel:0515-87294098"><div class="tel">0515-87294098</div></a>
                 <a href="feedback/" target="_blank"><div class="btn">留言咨询</div></a>
             </div>
         </div>
